@@ -9,12 +9,8 @@ class Config:
     SECRET_KEY = os.getenv("SECRET_KEY")
     if not SECRET_KEY:
         raise RuntimeError("SECRET_KEY is not set. Add a long random value to your .env file.")
-
-    # Reject uploads bigger than 8 MB
     MAX_CONTENT_LENGTH = 8 * 1024 * 1024
 
-    # Rate-limit storage. memory:// is fine for local dev only; in production
-    # use Redis, e.g. RATELIMIT_STORAGE_URI=redis://localhost:6379
     RATELIMIT_STORAGE_URI = os.getenv("RATELIMIT_STORAGE_URI", "memory://")
 
     SESSION_COOKIE_HTTPONLY = True
@@ -32,7 +28,6 @@ class Config:
     DB_HOST = os.getenv("DB_HOST")
     DB_NAME = os.getenv("DB_NAME")
 
-    # Priority: DATABASE_URL -> MySQL (if DB_HOST set) -> local SQLite file.
     if DATABASE_URL:
         SQLALCHEMY_DATABASE_URI = DATABASE_URL
     elif DB_HOST:
