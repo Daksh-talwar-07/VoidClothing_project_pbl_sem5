@@ -1,0 +1,122 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}{{ product.name }} | {{ store_name }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/product_details.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/products.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/cart.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/products.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+    <section class="product-page">
+        <div class="product-image">
+            <img src="{{ product.image }}" alt="{{ product.name }}" loading="lazy" decoding="async">
+        </div>
+        <div class="product-info">
+            <p>NEW DROP</p>
+            <h1>{{ product.name }}</h1>
+            <h2>₹{{ product.price }}</h2>
+            {% if product.stock > 0 %}
+                {% if product.stock == 1 %}
+                    <p class="stock-warning">Only 1 piece left 🔥</p>
+                {% else %}
+                    <p class="stock-available">In Stock: {{ product.stock }}</p>
+                {% endif %}
+            {% else %}
+                <p class="stock-out">Out Of Stock ❌</p>
+            {% endif %}
+            <p class="product-desc">{{ product.description }}</p>
+            <form action="/add-to-cart/{{ product.id }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="sizes">
+                    {% for size in ['S', 'M', 'L', 'XL'] %}
+                        {% if size in product.sizes.split(',') %}
+                            <label class="size-option">
+                                <input type="radio" name="size" value="{{ size }}" required>
+                                <span>{{ size }}</span>
+                            </label>
+                        {% else %}
+                            <span class="unavailable">{{ size }}</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% if product.stock > 0 %}
+                    <button type="submit" class="btn">Add To Cart</button>
+                {% else %}
+                    <button class="btn out-stock-btn" disabled>Out Of Stock</button>
+                {% endif %}
+            </form>
+        </div>
+    </section>
+
+    <section class="review-preview-section">
+        <div class="review-preview-card">
+            <div>
+                <h2>⭐ Customer Reviews</h2>
+                {% if reviews %}
+                    <p>{{ reviews|length }} reviews from customers</p>
+                {% else %}
+                    <p>No reviews yet. Be the first one.</p>
+                {% endif %}
+            </div>
+            <button class="btn" type="button" onclick="openReviews()">View Reviews</button>
+        </div>
+    </section>
+
+    <div class="review-overlay" id="reviewOverlay" onclick="closeReviews()"></div>
+    <div class="review-drawer" id="reviewDrawer">
+        <button class="review-close" onclick="closeReviews()">✕</button>
+        <h2>Customer Reviews</h2>
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="review-card">
+                    <div class="review-header">
+                        <h3>{{ review.name }}</h3>
+                        <div class="review-stars">
+                            {% for i in range(review.rating) %}
+                                ⭐
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <p>{{ review.review }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-review-text">No reviews yet.</p>
+        {% endif %}
+
+        <div class="review-form">
+            <h3>Write a Review</h3>
+            <form action="/add-review/{{ product.id }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="hidden" name="rating" id="rating-input" required>
+                <div class="rating-stars">
+                    <span data-value="1">★</span>
+                    <span data-value="2">★</span>
+                    <span data-value="3">★</span>
+                    <span data-value="4">★</span>
+                    <span data-value="5">★</span>
+                </div>
+                <textarea name="review" placeholder="Write your review..." required></textarea>
+                <button class="btn" type="submit">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="products">
+        <h2>You May Also Like</h2>
+        <div class="product-container">
+            {% for item in related_products %}
+                {% with product=item, show_badge=False %}
+                    {% include 'components/product_card.html' %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

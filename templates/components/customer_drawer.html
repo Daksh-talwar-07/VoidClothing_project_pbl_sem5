@@ -1,0 +1,61 @@
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<aside class="customer-drawer" id="customerDrawer">
+
+    <div class="drawer-header">
+
+        <div class="avatar">
+            {{ current_user.full_name[0]|upper }}
+        </div>
+
+        <div class="customer-info">
+            <h3>{{ current_user.full_name }}</h3>
+            <p>{{ current_user.email }}</p>
+        </div>
+
+        <button class="close-drawer" id="closeDrawer">
+            ✕
+        </button>
+
+    </div>
+
+    <div class="drawer-body">
+        <div class="drawer-section">
+
+            <h4>Account</h4>
+
+            <a href="{{url_for('customer.customer_orders')}}">
+                📦 My Orders: <span>{{ order_count }}</span>
+            </a>
+
+
+        </div>
+
+        <div class="drawer-section">
+
+            <h4>Profile</h4>
+
+            <p>
+                <strong>Name</strong><br>
+                {{ current_user.full_name }}
+            </p>
+
+            <p>
+                <strong>Phone</strong><br>
+                {{ current_user.phone }}
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="drawer-footer">
+
+        <a class="logout-btn"
+           href="{{ url_for('auth.logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</aside>

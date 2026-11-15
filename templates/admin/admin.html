@@ -1,0 +1,71 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Admin | {{ store_name }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/admin.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/admin.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+<section class="admin">
+    <div class="admin-div">
+        <h1>ADD PRODUCTS</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="text" name="name" placeholder="Product Name" required>
+            <input type="number" name="price" placeholder="Price" required>
+            <input type="number" name="stock" id="stock" placeholder="Stock Quantity" min="1" required>
+            <select name="category" required>
+                <option value="">Select Category</option>
+                {% for c in categories %}
+                <option value="{{ c.slug }}">{{ c.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="file" name="image" accept="image/*" required>
+            <textarea name="description" placeholder="Product Description"></textarea>
+            <h3>Available Sizes</h3>
+            <div id="size-container">
+                <label><input type="checkbox" name="sizes" value="S"> S</label>
+                <label><input type="checkbox" name="sizes" value="M"> M</label>
+                <label><input type="checkbox" name="sizes" value="L"> L</label>
+                <label><input type="checkbox" name="sizes" value="XL"> XL</label>
+            </div>
+            <button type="submit" class="btn">Add Product</button>
+        </form>
+    </div>
+</section>
+
+<h2>Existing Products</h2>
+{% for product in products %}
+<div class="product-list">
+    <div class="product-left">
+        <img src="{{ product.image }}" alt="{{ product.name }}" loading="lazy" decoding="async">
+        <div>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.category }}</p>
+            <p>₹{{ product.price }}</p>
+            <p>Stock: {{ product.stock }}</p>
+        </div>
+    </div>
+    <div class="actions">
+        <form action="/admin/toggle-stock/{{ product.id }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            {% if product.stock > 0 %}
+                <button type="submit" class="stock-toggle-btn">⚠️ Out of Stock</button>
+            {% else %}
+                <button type="submit" class="stock-toggle-btn available">✅ Available</button>
+            {% endif %}
+        </form>
+        <a href="/admin/edit/{{ product.id }}" class="edit-btn">✏️ Edit</a>
+        <form action="/admin/delete/{{ product.id }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="delete-btn">🗑️ Delete</button>
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,251 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Cart | {{ store_name }}{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/pages/cart.css') }}">
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/components/login_popup.css') }}">
+
+{% endblock %}
+{% block extra_js %}
+
+<script src="{{ url_for('static', filename='js/cart.js') }}" defer></script>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="cart-section">
+
+    <h2>Your Cart</h2>
+
+    {% if cart_items %}
+
+    <div class="cart-container">
+
+        {% for item in cart_items %}
+
+        <div class="cart-row">
+
+            <a href="/product/{{ item.product.id }}" class="cart-img">
+
+                <img
+                    src="{{ item.product.image }}"
+                    alt="{{ item.product.name }}"
+                    loading="lazy"
+                    decoding="async">
+
+            </a>
+
+
+            <div class="cart-details">
+
+                <p class="cart-label">
+                    Name
+                </p>
+
+                <h3>
+                    {{ item.product.name }}
+                </h3>
+
+
+                <p class="cart-label">
+                    Size
+                </p>
+
+                <h4>
+                    {{ item.size }}
+                </h4>
+
+
+                <p class="cart-label">
+                    Price
+                </p>
+
+                <h4>
+                    ₹{{ item.product.price }}
+                </h4>
+
+            </div>
+
+
+            <div class="cart-qty">
+
+                <p class="cart-label">
+                    Quantity
+                </p>
+
+                <div class="qty-box">
+
+                    <a href="/cart/decrease/{{ item.key }}">
+                        −
+                    </a>
+
+                    <span>
+                        {{ item.qty }}
+                    </span>
+
+                    <a href="/cart/increase/{{ item.key }}">
+                        +
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="cart-subtotal">
+
+                <p class="cart-label">
+                    Subtotal
+                </p>
+
+                <h3>
+                    ₹{{ item.subtotal }}
+                </h3>
+
+            </div>
+
+
+            <a
+                href="/remove-from-cart/{{ item.key }}"
+                class="cart-remove-btn">
+
+                🗑 Remove
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="cart-summary">
+
+        <h2>
+            Total
+        </h2>
+
+        <h2>
+            ₹{{ total }}
+        </h2>
+
+        <button
+            type="button"
+            onclick="placeOrder()"
+            data-logged-in="{{ current_user.is_authenticated|tojson }}">
+
+            Place Order on WhatsApp
+
+        </button>
+
+    </div>
+
+
+    <a
+        href="/collection"
+        class="continue-shopping">
+
+        ← Continue Shopping
+
+    </a>
+
+
+    {% else %}
+
+    <div class="empty-cart-box">
+
+        <div class="empty-cart-icon">
+            🛒
+        </div>
+
+        <h2>
+            Your cart is empty
+        </h2>
+
+        <p>
+            Looks like you haven’t added anything yet.
+            Explore our latest drops and find your fit.
+        </p>
+
+        <a
+            href="/collection"
+            class="btn">
+
+            Continue Shopping
+
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+
+<!-- LOGIN POPUP -->
+
+<div
+    class="login-popup-overlay"
+    id="loginPopup">
+
+    <div class="login-popup">
+
+        <button
+            type="button"
+            class="login-popup-close"
+            onclick="closeLoginPopup()">
+
+            ✕
+
+        </button>
+
+
+        <div class="login-popup-icon">
+            🔐
+        </div>
+
+
+        <h2>
+            Login Required
+        </h2>
+
+
+        <p>
+            Please login or create an account before placing your order.
+        </p>
+
+
+        <div class="login-popup-buttons">
+
+            <a
+                href="{{ url_for('auth.login') }}">
+
+                Login
+
+            </a>
+
+
+            <a
+                href="{{ url_for('auth.register') }}">
+
+                Register
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}

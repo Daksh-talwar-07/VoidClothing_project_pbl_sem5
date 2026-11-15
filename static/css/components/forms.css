@@ -1,0 +1,80 @@
+.admin {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-div {
+    width: 500px;
+    background: grey;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.admin form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin input,
+.admin textarea,
+.admin select,
+.review-form input,
+.review-form textarea {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--surface-3);
+    color: black;
+}
+
+.admin input:focus,
+.admin textarea:focus,
+.admin select:focus,
+.review-form input:focus,
+.review-form textarea:focus {
+    outline: none;
+}
+
+.review-form {
+    margin-top: 60px;
+    background: var(--surface);
+    padding: 35px;
+    border-radius: 18px;
+}
+
+.review-form h3 {
+    margin-bottom: 20px;
+}
+
+.review-form textarea {
+    min-height: 140px;
+    resize: none;
+}
+
+.error-msg {
+    color: var(--danger);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.size-option input {
+    display: none;
+}
+
+.size-option span {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 10px 16px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.size-option input:checked + span {
+    background: var(--accent);
+    color: var(--surface);
+}

@@ -1,0 +1,12 @@
+<a href="/product/{{ product.id }}" class="product-link">
+    <div class="card {% if product.stock|int <= 0 %}sold-out-card{% endif %}">
+        <div class="card-img-box">
+            <img src="{{ product.image }}" alt="{{ product.name }}" loading="lazy" decoding="async">
+            {% if show_badge and product.stock|int <= 0 %}
+                <span class="sold-out-badge">SOLD OUT</span>
+            {% endif %}
+        </div>
+        <h3>{{ product.name }}</h3>
+        <p>₹{{ product.price }}</p>
+    </div>
+</a>

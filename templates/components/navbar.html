@@ -1,0 +1,56 @@
+<header class="navbar">
+    <a href="/" class="logo">
+        <img src="{{ store_logo }}" alt="{{ store_name }} Logo">
+        <span>{{ store_name }}</span>
+    </a>
+    <form action="/collection" method="GET" class="search-form" id="searchForm">
+        <input type="text" name="search" placeholder="Search products..." id="searchInput">
+    </form>
+
+    <button class="search-icon" onclick="toggleSearch()" type="button">🔍</button>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav id="navLinks">
+
+        <a href="/" class="{% if request.path == '/' %}active{% endif %}">
+            Home
+        </a>
+
+        <a href="/collection"
+            class="{% if request.path == '/collection' %}active{% endif %}">
+                Collection
+        </a>
+
+        <a href="/cart"
+            class="{% if request.path == '/cart' %}active{% endif %}">
+                🛒 Cart ({{ cart_count }})
+        </a>
+
+        <a href="/#about">About</a>
+
+        <a href="/#contact">Contact</a>
+
+        {% if current_user.is_authenticated %}
+
+            <button
+                type="button"
+                class="profile-button"
+                onclick="openCustomerDrawer()">
+
+                👋 {{ current_user.full_name.split()[0] }}
+
+            </button>
+
+        {% else %}
+
+            <a href="{{ url_for('auth.login') }}">
+                Login
+            </a>
+
+            <a href="{{ url_for('auth.register') }}">
+                Register
+            </a>
+
+        {% endif %}
+
+</nav>
+</header>

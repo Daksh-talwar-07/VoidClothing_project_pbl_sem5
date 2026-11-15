@@ -1,0 +1,96 @@
+{% extends "layouts/admin_base.html" %}
+
+{% block title %}
+Orders | {{ store_name }}
+{% endblock %}
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/admin/orders.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="admin-orders">
+
+    <div class="orders-header">
+
+        <span>ORDER MANAGEMENT</span>
+
+        <h1>Orders</h1>
+
+        <p>
+            Manage and track customer orders.
+        </p>
+
+    </div>
+
+
+    {% if orders %}
+
+        <div class="orders-list">
+
+            {% for order in orders %}
+
+                <a
+                    href="{{ url_for(
+                        'admin_order_details',
+                        order_id=order.id
+                    ) }}"
+                    class="admin-order-card"
+                >
+
+                    <div>
+
+                        <span>
+                            ORDER #{{ order.id }}
+                        </span>
+
+                        <h3>
+                            ₹{{ order.final_price }}
+                        </h3>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            {{ order.status.replace("_", " ")|title }}
+                        </span>
+
+                        <p>
+                            {{ order.created_at.strftime(
+                                "%d %b %Y, %I:%M %p"
+                            ) }}
+                        </p>
+
+                    </div>
+
+                </a>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="no-orders">
+
+            <h2>
+                No orders yet
+            </h2>
+
+            <p>
+                Customer orders will appear here.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

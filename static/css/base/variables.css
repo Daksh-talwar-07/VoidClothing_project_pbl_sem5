@@ -1,0 +1,51 @@
+/* ===========================================
+   DESIGN TOKENS
+   Every color used across the project is a
+   CSS variable defined here. Actual values
+   are injected per-store from store_config.py
+   (see templates/layouts/base.html and
+   templates/layouts/admin_base.html) so this
+   file only provides a safe fallback theme.
+   =========================================== */
+
+:root {
+    /* Backgrounds (page -> elevated surfaces) */
+    --bg: #0b0b0b;
+    --bg-alt: #111111;
+    --surface: #1b1b1b;
+    --surface-2: #161616;
+    --surface-3: #2a2a2a;
+    --surface-4: #383838;
+
+    /* Text */
+    --text-color: #ffffff;
+    --text-secondary: #d0d0d0;
+    --text-soft: #aaaaaa;
+    --muted-color: #888888;
+
+    /* Borders */
+    --border: rgba(255,255,255,0.08);
+    --border-strong: #3a3a3a;
+
+    /* Brand */
+    --primary-color: #080808;
+    --secondary-color: #111111;
+    --accent: #c9a227;
+    --accent-2: #e0b933;
+    --accent-color: #d4af37;
+    --accent-soft: rgba(201, 162, 39, 0.12);
+
+    /* Status */
+    --success: #4caf50;
+    --success-rgb: 76, 175, 80;
+    --danger: crimson;
+    --danger-rgb: 220, 20, 60;
+    --warning: #d4af37;
+    --warning-rgb: 212, 175, 55;
+    --info: #4d9fff;
+    --info-rgb: 77, 159, 255;
+    --highlight: #b18cff;
+    --highlight-rgb: 177, 140, 255;
+
+    --shadow: rgba(201, 162, 39, 0.3);
+}

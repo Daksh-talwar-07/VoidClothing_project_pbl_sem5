@@ -1,0 +1,455 @@
+/* =========================================
+   ADMIN ORDERS
+========================================= */
+
+.admin-orders {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.orders-header {
+    margin-bottom: 30px;
+}
+
+.orders-header > span {
+    display: block;
+
+    color: var(--text-soft);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.orders-header h1 {
+    margin: 0;
+
+    color: var(--text-color);
+
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.orders-header p {
+    margin-top: 8px;
+
+    color: var(--muted-color);
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   ORDER LIST
+========================================= */
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* =========================================
+   ORDER CARD
+========================================= */
+
+.admin-order-card {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    background: var(--bg-alt);
+
+    border: 1px solid black;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    color: white;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.admin-order-card:hover {
+
+    background: var(--surface);
+
+    border-color: var(--surface-4);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.admin-order-card > div:first-child span {
+
+    display: block;
+
+    color: var(--muted-color);
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 7px;
+}
+
+
+.admin-order-card h3 {
+
+    margin: 0;
+
+    color: var(--text-color);
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.admin-order-card > div:last-child {
+
+    text-align: right;
+}
+
+
+.admin-order-card > div:last-child span {
+
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: var(--surface-2);
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-transform: capitalize;
+}
+
+
+.admin-order-card > div:last-child p {
+
+    margin: 8px 0 0;
+
+    color: var(--muted-color);
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.no-orders {
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+    background: var(--bg-alt);
+
+    border: 1px solid var(--surface-3);
+
+    border-radius: 12px;
+}
+
+
+.no-orders h2 {
+
+    margin: 0 0 10px;
+
+    color: var(--text-color);
+
+    font-size: 22px;
+}
+
+
+.no-orders p {
+
+    margin: 0;
+
+    color: var(--muted-color);
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   ORDER DETAILS
+========================================= */
+
+.order-details-page {
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+
+.order-details-header {
+
+    margin-bottom: 30px;
+}
+
+
+.order-details-header span {
+
+    display: block;
+
+    color: var(--muted-color);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+
+.order-details-header h1 {
+
+    margin: 0;
+
+    color: var(--text-color);
+
+    font-size: 32px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   DETAIL SECTION
+========================================= */
+
+.order-detail-section {
+
+    background: var(--bg-alt);
+
+    border: 1px solid var(--surface-3);
+
+    border-radius: 12px;
+
+    padding: 24px;
+
+    margin-bottom: 18px;
+}
+
+
+.order-detail-section h2 {
+
+    margin: 0 0 18px;
+
+    color: var(--text-color);
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+.order-detail-section p {
+
+    margin: 7px 0;
+
+    color: var(--muted-color);
+
+    font-size: 14px;
+}
+
+
+.order-detail-section strong {
+
+    color: var(--text-color);
+}
+
+
+/* =========================================
+   ORDER ITEMS
+========================================= */
+
+.order-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px 0;
+
+    border-top: 1px solid var(--surface-3);
+}
+
+
+.order-item:first-of-type {
+
+    border-top: none;
+
+    padding-top: 0;
+}
+
+
+.order-item:last-child {
+
+    padding-bottom: 0;
+}
+
+
+.order-item p {
+
+    margin: 6px 0 0;
+
+    color: var(--muted-color);
+}
+
+
+/* =========================================
+   STATUS FORM
+========================================= */
+
+.order-detail-section select {
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    background: var(--bg-alt);
+
+    border: 1px solid var(--surface-3);
+
+    border-radius: 8px;
+
+    color: white;
+
+    font-size: 14px;
+
+    outline: none;
+
+    margin-bottom: 12px;
+}
+
+
+.order-detail-section select:focus {
+
+    border-color: var(--border-strong);
+}
+
+
+.order-detail-section button {
+
+    width: 100%;
+
+    padding: 13px 16px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: var(--surface);
+
+    color: var(--text-color);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.order-detail-section button:hover {
+
+    background: var(--border-strong);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .admin-orders,
+    .order-details-page {
+        width: 100%;
+    }
+
+
+    .orders-header h1,
+    .order-details-header h1 {
+        font-size: 27px;
+    }
+
+
+    .admin-order-card {
+
+        padding: 18px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .admin-order-card > div:last-child {
+
+        text-align: left;
+    }
+
+
+    .order-item {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+    .order-detail-section {
+
+        padding: 18px;
+    }
+
+}

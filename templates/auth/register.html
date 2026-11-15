@@ -1,0 +1,80 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+Register | {{ store_name }}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/pages/auth.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="auth-section">
+
+    <div class="auth-card">
+
+        <h1 class="auth-title">
+            Join VOID
+        </h1>
+
+        <p class="auth-subtitle">
+            Create your account and become a part of the VOID community.
+        </p>
+
+        <form method="POST" class="auth-form">
+
+            <input type="hidden"
+                   name="csrf_token"
+                   value="{{ csrf_token() }}">
+
+            <input
+                class="form-input"
+                type="text"
+                name="full_name"
+                placeholder="Full Name"
+                required>
+
+            <input
+                class="form-input"
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required>
+
+            <input
+                class="form-input"
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                required>
+
+            <input
+                class="form-input"
+                type="password"
+                name="password"
+                placeholder="Password"
+                required>
+
+            <button
+                class="btn btn-primary"
+                type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+        <p class="auth-footer">
+            Already have an account?
+
+            <a href="{{ url_for('auth.login') }}">
+                Login
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends "layouts/admin_base.html" %}
+
+{% block title %}
+Customers | {{ store_name }}
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/admin/customers.css') }}">
+
+{% endblock %}
+
+{% block page_title %}
+Customers
+{% endblock %}
+
+{% block content %}
+
+<div class="admin-customers">
+
+    <div class="customers-header">
+
+        <span>
+            CUSTOMER MANAGEMENT
+        </span>
+
+        <h1>
+            Customers
+        </h1>
+
+        <p>
+            View and manage customers registered on your store.
+        </p>
+
+    </div>
+
+
+    {% if customers %}
+
+        <div class="customers-list">
+
+            {% for customer in customers %}
+
+                <div class="customer-card">
+
+                    <div class="customer-main">
+
+                        <div class="customer-avatar">
+                            {{ customer.full_name[0]|upper }}
+                        </div>
+
+
+                        <div class="customer-info">
+
+                            <h3>
+                                {{ customer.full_name }}
+                            </h3>
+
+                            <p>
+                                {{ customer.email }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="customer-contact">
+
+                        <span>
+                            PHONE
+                        </span>
+
+                        <strong>
+                            {{ customer.phone }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="customer-points">
+                        <span>
+                            Joined
+                            <strong>{{ customer.joined_at.strftime("%d %b %Y") if customer.joined_at else "-" }}</strong>
+                        </span>
+                        
+
+                    </div>
+
+
+                    <div class="customer-status">
+
+                        {% if customer.is_active %}
+
+                            <span class="status active">
+                                Active
+                            </span>
+
+                        {% else %}
+
+                            <span class="status inactive">
+                                Inactive
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="customer-date">
+
+                        <span>
+                            JOINED
+                        </span>
+
+                        <strong>
+                            {{ customer.joined_at.strftime(
+                                "%d %b %Y"
+                            ) }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="no-customers">
+
+            <h2>
+                No customers yet
+            </h2>
+
+            <p>
+                Registered customers will appear here.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

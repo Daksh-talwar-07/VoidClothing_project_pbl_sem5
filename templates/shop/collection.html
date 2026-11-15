@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Collection | {{ store_name }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/products.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section class="products collection-page" id="collection">
+        <h2>All Collections</h2>
+        <div class="category-filter" id="categoryFilter">
+            <a href="/collection?category=All" class="{% if not category or category == 'All' %}active{% endif %}">All</a>
+            {% for c in categories %}
+            <a href="/collection?category={{ c.slug }}" class="{% if category == c.slug %}active{% endif %}">{{ c.name }}</a>
+            {% endfor %}
+        </div>
+        <script>
+            // keep the selected chip visible in the scrollable strip
+            (function () {
+                var a = document.querySelector('#categoryFilter a.active');
+                if (a && a.scrollIntoView) { a.scrollIntoView({inline: 'center', block: 'nearest'}); }
+            })();
+        </script>
+        <div class="product-container">
+            {% if products %}
+                {% for product in products %}
+                    {% with show_badge=True %}
+                        {% include 'components/product_card.html' %}
+                    {% endwith %}
+                {% endfor %}
+            {% else %}
+                <div class="no-products">
+                    <h2>OOPS! No Products found</h2>
+                    <p>{% if search %}Sorry, we couldn't find "{{ search }}"{% else %}Nothing here yet.{% endif %}</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

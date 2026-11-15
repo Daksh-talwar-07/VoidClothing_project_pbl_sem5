@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Checkout | {{ store_name }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/checkout.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="admin">
+    <div class="admin-div">
+        <h1>Checkout</h1>
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <textarea name="address" placeholder="Full Address" required></textarea>
+            <h3>Total: ₹{{ total }}</h3>
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

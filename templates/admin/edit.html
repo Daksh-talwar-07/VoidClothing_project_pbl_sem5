@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Edit | {{ store_name }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="admin">
+    <div class="admin-div">
+        <h1>Edit PRODUCT(s)</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="text" value="{{ product.name }}" name="name" placeholder="Product Name" required>
+            <input type="number" value="{{ product.price }}" name="price" placeholder="Price" required>
+            <input type="number" value="{{ product.stock }}" name="stock" placeholder="Stock Quantity" min="0" required>
+            <select name="category" required>
+                {% for c in categories %}
+                <option value="{{ c.slug }}" {% if product.category == c.slug %}selected{% endif %}>{{ c.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="file" name="image">
+            <h3>Current Image</h3>
+            <img src="{{ product.image }}" alt="{{ product.name }}" width="100" style="border-radius: 10px;">
+            <p>Current image stored on Cloudinary ✅</p>
+            <textarea name="description" placeholder="Product Description">{{ product.description }}</textarea>
+            <h3>Available Sizes</h3>
+            <div id="size-container">
+                <label><input type="checkbox" name="sizes" value="S" {% if 'S' in product.sizes.split(',') %}checked{% endif %}> S</label>
+                <label><input type="checkbox" name="sizes" value="M" {% if 'M' in product.sizes.split(',') %}checked{% endif %}> M</label>
+                <label><input type="checkbox" name="sizes" value="L" {% if 'L' in product.sizes.split(',') %}checked{% endif %}> L</label>
+                <label><input type="checkbox" name="sizes" value="XL" {% if 'XL' in product.sizes.split(',') %}checked{% endif %}> XL</label>
+            </div>
+            <button type="submit" class="btn">Update Product</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

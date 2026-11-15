@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Admin
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/base/variables.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin/admin_base.css') }}">
+
+    {% block extra_css %}
+    {% endblock %}
+
+    <style>
+        :root {
+            --bg: {{ bg_color }};
+            --bg-alt: {{ bg_alt_color }};
+            --surface: {{ surface_color }};
+            --surface-2: {{ surface_2_color }};
+            --surface-3: {{ surface_3_color }};
+            --surface-4: {{ surface_4_color }};
+
+            --text-color: {{ text_color }};
+            --text-secondary: {{ text_secondary_color }};
+            --text-soft: {{ text_soft_color }};
+            --muted-color: {{ muted_color }};
+
+            --border: {{ border_color }};
+            --border-strong: {{ border_strong_color }};
+
+            --primary-color: {{ primary_color }};
+            --secondary-color: {{ secondary_color }};
+            --accent: {{ accent_color }};
+            --accent-2: {{ accent_2_color }};
+            --accent-color: {{ accent_color }};
+            --accent-color-rgb: {{ accent_color_rgb }};
+            --accent-soft: {{ accent_soft_color }};
+
+            --success: {{ success_color }};
+            --success-rgb: {{ success_color_rgb }};
+            --danger: {{ danger_color }};
+            --danger-rgb: {{ danger_color_rgb }};
+            --warning: {{ warning_color }};
+            --warning-rgb: {{ warning_color_rgb }};
+            --info: {{ info_color }};
+            --info-rgb: {{ info_color_rgb }};
+            --highlight: {{ highlight_color }};
+            --highlight-rgb: {{ highlight_color_rgb }};
+
+            --shadow: {{ shadow_color }};
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- ADMIN SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                {{ store_name }}
+            </div>
+
+            <nav class="admin-nav">
+
+                <a href="/admin">
+                    Dashboard
+                </a>
+
+                <a href="/admin/products">
+                    Products
+                </a>
+
+                <a href="/admin/orders">
+                    Orders
+                </a>
+
+                <a href="/admin/customers">
+                    Customers
+                </a>
+                <form action="/admin/generate-inventory-report" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit">Generate Inventory Report</button>
+</form>
+
+            </nav>
+
+            <a
+                href="/admin/logout"
+                class="admin-logout">
+
+                Logout
+
+            </a>
+
+        </aside>
+
+
+        <!-- ADMIN MAIN -->
+
+        <main class="admin-main">
+
+            <header class="admin-header">
+
+                <button
+                    type="button"
+                    class="admin-menu-btn"
+                    onclick="toggleAdminMenu()">
+
+                    ☰
+
+                </button>
+
+                <div>
+
+                    <h1>
+                        {% block page_title %}
+                        Admin Dashboard
+                        {% endblock %}
+                    </h1>
+
+                </div>
+
+            </header>
+
+
+            <section class="admin-content">
+
+                {% block content %}
+                {% endblock %}
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        function toggleAdminMenu() {
+
+            document
+                .querySelector(".admin-sidebar")
+                .classList.toggle("active");
+
+        }
+
+    </script>
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

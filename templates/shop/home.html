@@ -1,0 +1,93 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}{{ store_name }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/products.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <section class="hero">
+
+    <div class="hero-slide active"
+         style="background-image: url('/static/images/hero1.jpg');">
+    </div>
+
+    <div class="hero-slide"
+         style="background-image: url('/static/images/hero2.jpg');">
+    </div>
+
+    <div class="hero-slide"
+         style="background-image: url('/static/images/hero3.jpg');">
+    </div>
+
+    <div class="hero-slide"
+         style="background-image: url('/static/images/hero4.jpg');">
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <button class="hero-arrow hero-prev" id="heroPrev">
+        ‹
+    </button>
+
+    <button class="hero-arrow hero-next" id="heroNext">
+        ›
+    </button>
+
+    <div class="hero-dots">
+        <span class="hero-dot active"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+    </div>
+
+</section>
+
+
+<section class="category-rail">
+    <p class="tagline">SHOP BY CATEGORY</p>
+    <h2 class="category-rail-title">Find Your Style</h2>
+
+    <div class="category-track-wrap">
+        <div class="category-track">
+            {% for c in categories + categories %}
+            <a href="/collection?category={{ c.slug }}" class="category-item">
+                <span class="category-thumb">
+                    <img src="{{ url_for('static', filename='images/categories/' ~ c.image) }}" alt="{{ c.name }}">
+                </span>
+                <span class="category-label">{{ c.name }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+    <section class="products" id="collection">
+        <h2>Featured Collection</h2>
+        <div class="product-container">
+            {% for product in products %}
+                {% with show_badge=False %}
+                    {% include 'components/product_card.html' %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <p class="tagline">ABOUT THE BRAND</p>
+        <h2>Built for the Bold.</h2>
+        <p>{{ store_name }} is a premium streetwear concept made for people who carry confidence, attitude and individuality in every outfit.</p>
+        <p>Curated drops, oversized fits and everyday essentials. Pick your size and place your order directly on WhatsApp.</p>
+    </section>
+
+    <section class="cta" id="contact">
+        <h2>Ready to Order?</h2>
+        <p>Place your Order directly on WhatsApp</p>
+        <a href="/cart" class="btn">Order on WhatsApp</a>
+    </section>
+{% endblock %}

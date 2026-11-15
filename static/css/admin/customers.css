@@ -1,0 +1,338 @@
+/* =========================================
+   ADMIN CUSTOMERS
+========================================= */
+
+.admin-customers {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.customers-header {
+    margin-bottom: 30px;
+}
+
+.customers-header > span {
+    display: block;
+
+    color: var(--muted-color);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.customers-header h1 {
+    margin: 0;
+
+    color: var(--text-color);
+
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.customers-header p {
+    margin-top: 8px;
+
+    color: var(--muted-color);
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   CUSTOMER LIST
+========================================= */
+
+.customers-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* =========================================
+   CUSTOMER CARD
+========================================= */
+
+.customer-card {
+
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1.2fr
+        1fr
+        0.7fr
+        1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 18px 22px;
+
+    background: var(--bg-alt);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.customer-card:hover {
+
+    background: var(--surface);
+
+    border-color: var(--surface-4);
+}
+
+
+/* =========================================
+   CUSTOMER MAIN
+========================================= */
+
+.customer-main {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 0;
+}
+
+
+.customer-avatar {
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--surface-2);
+
+    color: var(--text-color);
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.customer-info {
+
+    min-width: 0;
+}
+
+
+.customer-info h3 {
+
+    margin: 0;
+
+    color: var(--text-color);
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.customer-info p {
+
+    margin: 5px 0 0;
+
+    color: var(--muted-color);
+
+    font-size: 12px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   INFO COLUMNS
+========================================= */
+
+.customer-contact span,
+.customer-points span,
+.customer-date span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--muted-color);
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+}
+
+
+.customer-contact strong,
+.customer-points strong,
+.customer-date strong {
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.status.active {
+
+    background: rgba(var(--success-rgb), 0.12);
+
+    color: var(--success);
+}
+
+
+.status.inactive {
+
+    background: rgba(var(--danger-rgb), 0.12);
+
+    color: var(--danger);
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.no-customers {
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+    background: var(--bg-alt);
+
+    border: 1px solid var(--surface-3);
+
+    border-radius: 12px;
+}
+
+
+.no-customers h2 {
+
+    margin: 0 0 10px;
+
+    color: var(--text-color);
+
+    font-size: 22px;
+}
+
+
+.no-customers p {
+
+    margin: 0;
+
+    color: var(--muted-color);
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .customer-card {
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 18px;
+    }
+
+    .customer-main {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .customers-header h1 {
+        font-size: 27px;
+    }
+
+
+    .customer-card {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 16px;
+
+        padding: 18px;
+    }
+
+
+    .customer-main {
+        width: 100%;
+    }
+
+
+    .customer-contact,
+    .customer-points,
+    .customer-status,
+    .customer-date {
+
+        width: 100%;
+
+        padding-top: 12px;
+
+        border-top: 1px solid var(--surface-3);
+    }
+
+}

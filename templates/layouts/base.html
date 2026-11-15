@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="{{ store_name }}">
+    <meta name="keywords" content="streetwear, oversized t-shirt, hoodie, clothing, {{ store_name | lower }}, premium fashion">
+    <meta name="theme-color" content="{{ primary_color }}">
+    <meta name="description" content="Premium streetwear clothing brand. Shop oversized t-shirts, hoodies, jeans and more.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/variables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/buttons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/components/drawer.css') }}">
+    {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/responsive.css') }}">
+
+    <style>
+        :root {
+            --bg: {{ bg_color }};
+            --bg-alt: {{ bg_alt_color }};
+            --surface: {{ surface_color }};
+            --surface-2: {{ surface_2_color }};
+            --surface-3: {{ surface_3_color }};
+            --surface-4: {{ surface_4_color }};
+
+            --text-color: {{ text_color }};
+            --text-secondary: {{ text_secondary_color }};
+            --text-soft: {{ text_soft_color }};
+            --muted-color: {{ muted_color }};
+
+            --border: {{ border_color }};
+            --border-strong: {{ border_strong_color }};
+
+            --primary-color: {{ primary_color }};
+            --secondary-color: {{ secondary_color }};
+            --accent: {{ accent_color }};
+            --accent-2: {{ accent_2_color }};
+            --accent-color: {{ accent_color }};
+            --accent-color-rgb: {{ accent_color_rgb }};
+            --accent-soft: {{ accent_soft_color }};
+
+            --success: {{ success_color }};
+            --success-rgb: {{ success_color_rgb }};
+            --danger: {{ danger_color }};
+            --danger-rgb: {{ danger_color_rgb }};
+            --warning: {{ warning_color }};
+            --warning-rgb: {{ warning_color_rgb }};
+            --info: {{ info_color }};
+            --info-rgb: {{ info_color_rgb }};
+            --highlight: {{ highlight_color }};
+            --highlight-rgb: {{ highlight_color_rgb }};
+
+            --shadow: {{ shadow_color }};
+        }
+    </style>
+
+    <title>{% block title %}{{ store_name }} | Premium Streetwear{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+</head>
+<body>
+    {% include 'components/navbar.html' %}
+    {% include 'components/flash_messages.html' %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'components/footer.html' %}
+
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/navbar.js') }}" defer></script>
+    <script src="{{ url_for('static',filename='js/drawer.js') }}" defer></script>
+    {% block extra_js %}{% endblock %}
+    {% if current_user.is_authenticated %}
+    {% include "components/customer_drawer.html" %}
+{% endif %}
+</body>
+</html>

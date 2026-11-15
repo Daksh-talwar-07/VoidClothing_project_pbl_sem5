@@ -1,0 +1,786 @@
+/* =========================================
+   ADMIN DASHBOARD
+========================================= */
+
+.admin-dashboard {
+    max-width: 1450px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.dashboard-header {
+    margin-bottom: 35px;
+}
+
+.dashboard-eyebrow {
+    display: inline-block;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: var(--accent-2);
+
+    margin-bottom: 10px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+
+    font-size: 36px;
+    font-weight: 600;
+
+    letter-spacing: -1px;
+
+    color: var(--text-color);
+}
+
+.dashboard-header p {
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: var(--muted-color);
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.dashboard-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 45px;
+}
+
+
+.dashboard-stat {
+
+    position: relative;
+
+    padding: 22px;
+
+    min-height: 145px;
+
+    background: var(--bg-alt);
+
+    border: 1px solid black;
+
+    border-radius: 14px ;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+}
+
+
+.dashboard-stat:hover {
+
+    transform: translateY(-3px);
+
+    background: var(--surface-2);
+
+    border-color: var(--surface-4);
+}
+
+
+/* TOP */
+
+.stat-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+
+.stat-top span:first-child {
+
+    font-size: 13px;
+
+    color: var(--muted-color);
+
+    font-weight: 500;
+}
+
+
+.stat-icon {
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: var(--surface-2);
+
+    color: var(--accent-2);
+
+    font-size: 15px;
+}
+
+
+/* NUMBER */
+
+.dashboard-stat h2 {
+
+    margin: 0;
+
+    font-size: 30px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.5px;
+
+    color: var(--text-color);
+}
+
+
+/* DESCRIPTION */
+
+.dashboard-stat p {
+
+    margin-top: 7px;
+
+    font-size: 12px;
+
+    color: var(--muted-color);
+}
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.dashboard-section-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+
+.dashboard-section-header span {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted-color);
+
+    font-weight: 600;
+}
+
+
+.dashboard-section-header h2 {
+
+    margin: 6px 0 0;
+
+    font-size: 21px;
+
+    font-weight: 500;
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================================
+   QUICK ACCESS GRID
+========================================= */
+
+.dashboard-sections {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+/* =========================================
+   DASHBOARD CARD
+========================================= */
+
+.dashboard-card {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 17px;
+
+    min-height: 150px;
+
+    padding: 23px;
+
+    text-decoration: none;
+
+    background: var(--bg-alt);
+
+    border: 1px solid var(--surface-3);
+
+    border-radius: 14px;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+}
+
+
+.dashboard-card:hover {
+
+    transform: translateY(-4px);
+
+    background: var(--surface);
+
+    border-color: var(--surface-4);
+}
+
+
+/* =========================================
+   CARD ICON
+========================================= */
+
+.dashboard-card-icon {
+
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: var(--surface-2);
+
+    font-size: 19px;
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.dashboard-card-content {
+
+    padding-right: 20px;
+}
+
+
+.dashboard-card-content h2 {
+
+    margin: 2px 0 7px;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    color: var(--text-color);
+}
+
+
+.dashboard-card-content p {
+
+    margin: 0;
+
+    max-width: 210px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: var(--muted-color);
+}
+
+
+/* =========================================
+   ARROW
+========================================= */
+
+.dashboard-card-arrow {
+
+    position: absolute;
+
+    right: 20px;
+    bottom: 19px;
+
+    font-size: 18px;
+
+    color: var(--muted-color);
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+
+.dashboard-card:hover .dashboard-card-arrow {
+
+    color: var(--accent-2);
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .dashboard-stats {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+    .dashboard-sections {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .admin-dashboard {
+        width: 100%;
+    }
+
+
+    .dashboard-header {
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .dashboard-header h1 {
+
+        font-size: 28px;
+
+    }
+
+
+    .dashboard-stats {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+
+        margin-bottom: 32px;
+
+    }
+
+
+    .dashboard-stat {
+
+        min-height: 125px;
+
+        padding: 17px;
+
+    }
+
+
+    .dashboard-stat h2 {
+
+        font-size: 24px;
+
+    }
+
+
+    .dashboard-sections {
+
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+    }
+
+
+    .dashboard-card {
+
+        min-height: 125px;
+
+        padding: 19px;
+
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+    .dashboard-stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .dashboard-stat {
+
+        min-height: 110px;
+
+    }
+
+}
+
+/* =========================
+   REVENUE CLICKABLE CARD
+========================= */
+
+.revenue-stat {
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.revenue-stat:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   REVENUE MODAL
+========================= */
+
+.revenue-modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 9999;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   MODAL CARD
+========================= */
+
+.revenue-modal-card {
+
+    width: 100%;
+    max-width: 520px;
+
+    background: var(--bg-alt);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.6);
+
+    animation: revenueModalIn 0.2s ease;
+}
+
+
+@keyframes revenueModalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.revenue-modal-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    margin-bottom: 26px;
+}
+
+
+.revenue-modal-header span {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted-color);
+}
+
+
+.revenue-modal-header h2 {
+
+    margin: 5px 0 0;
+
+    font-size: 24px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.revenue-close {
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: var(--text-color);
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: background 0.2s ease;
+}
+
+
+.revenue-close:hover {
+
+    background: rgba(255, 255, 255, 0.12);
+
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.revenue-tabs {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 8px;
+
+    padding: 5px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border-radius: 12px;
+
+    margin-bottom: 28px;
+}
+
+
+.revenue-tab {
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--muted-color);
+
+    padding: 11px 8px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.revenue-tab:hover {
+
+    color: var(--text-color);
+
+}
+
+
+.revenue-tab.active {
+
+    background: rgba(255, 255, 255, 0.1);
+
+    color: var(--text-color);
+
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.revenue-result {
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+}
+
+
+.revenue-result span {
+
+    display: block;
+
+    font-size: 13px;
+
+    color: var(--muted-color);
+
+    margin-bottom: 8px;
+}
+
+
+.revenue-result h3 {
+
+    margin: 0;
+
+    font-size: 36px;
+
+    font-weight: 600;
+
+    letter-spacing: -1px;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .revenue-modal {
+
+        padding: 14px;
+
+        align-items: center;
+
+    }
+
+
+    .revenue-modal-card {
+
+        max-width: none;
+
+        border-radius: 18px 18px 0 0;
+
+        padding: 22px;
+
+    }
+
+
+    .revenue-modal-header h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .revenue-tabs {
+
+        gap: 5px;
+
+    }
+
+
+    .revenue-tab {
+
+        font-size: 12px;
+
+        padding: 10px 5px;
+
+    }
+
+
+    .revenue-result h3 {
+
+        font-size: 32px;
+
+    }
+
+}

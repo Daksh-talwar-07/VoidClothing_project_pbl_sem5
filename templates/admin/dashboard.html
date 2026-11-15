@@ -1,0 +1,316 @@
+{% extends 'layouts/admin_base.html' %}
+
+{% block title %}
+Admin Dashboard | {{ store_name }}
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/pages/admin_dashboard.css') }}">
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="admin-dashboard">
+
+    <!-- =========================
+         DASHBOARD HEADER
+    ========================== -->
+
+    <div class="dashboard-header">
+
+        <span class="dashboard-eyebrow">
+            {{ store_name }}
+        </span>
+
+        <h1>
+            Admin Dashboard
+        </h1>
+
+        <p>
+            Manage your store from one place.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         STATS
+    ========================== -->
+
+    <div class="dashboard-stats">
+
+
+        <div class="dashboard-stat">
+
+            <div class="stat-top">
+                <span>Products Listed</span>
+                <span class="stat-icon">📦</span>
+            </div>
+
+            <h2>
+                {{ total_products }}
+            </h2>
+
+            <p>
+                {{ out_of_stock }} out of stock
+            </p>
+
+        </div>
+
+
+        <!-- CUSTOMERS -->
+
+        <div class="dashboard-stat">
+
+            <div class="stat-top">
+                <span>Customers</span>
+                <span class="stat-icon">👥</span>
+            </div>
+
+            <h2>
+                {{ total_customers }}
+            </h2>
+
+            <p>
+                Registered customers
+            </p>
+
+        </div>
+
+
+        <!-- ORDERS -->
+
+        <div class="dashboard-stat">
+
+            <div class="stat-top">
+                <span>Orders</span>
+                <span class="stat-icon">🛒</span>
+            </div>
+
+            <h2>
+                {{ total_orders }}
+            </h2>
+
+            <p>
+                Total orders
+            </p>
+
+        </div>
+
+
+        <!-- REVENUE -->
+
+        <div class="dashboard-stat revenue-stat"
+            id="revenueStat">
+
+            <div class="stat-top">
+                <span>Revenue</span>
+                <span class="stat-icon">₹</span>
+            </div>
+
+            <h2>
+                ₹{{ revenue }}
+            </h2>
+
+            <p>
+                Total sales
+            </p>
+
+        </div>
+        
+
+
+    </div>
+
+    <div
+    id="revenueModal"
+    class="revenue-modal"
+    style="display:none;"
+>
+
+    <div class="revenue-modal-card">
+
+        <div class="revenue-modal-header">
+
+            <div>
+                <span>REVENUE</span>
+                <h2>Sales Overview</h2>
+            </div>
+
+            <button
+                type="button"
+                id="closeRevenueModal"
+                class="revenue-close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="revenue-tabs">
+
+            <button
+                class="revenue-tab active"
+                data-period="today"
+            >
+                Today
+            </button>
+
+            <button
+                class="revenue-tab"
+                data-period="week"
+            >
+                This Week
+            </button>
+
+            <button
+                class="revenue-tab"
+                data-period="month"
+            >
+                This Month
+            </button>
+
+        </div>
+
+
+        <div class="revenue-result">
+
+            <span id="revenuePeriodLabel">
+                Today
+            </span>
+
+            <h3
+                id="revenuePeriodAmount"
+                data-today="{{ today_revenue }}"
+                data-week="{{ week_revenue }}"
+                data-month="{{ month_revenue }}"
+            >
+                ₹{{ today_revenue }}
+            </h3>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- =========================
+         QUICK ACTIONS
+    ========================== -->
+
+    <div class="dashboard-section-header">
+
+        <div>
+            <span>MANAGEMENT</span>
+            <h2>Quick access</h2>
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-sections">
+
+
+        <!-- PRODUCTS -->
+
+        <a href="/admin/products"
+           class="dashboard-card">
+
+            <div class="dashboard-card-icon">
+                📦
+            </div>
+
+            <div class="dashboard-card-content">
+
+                <h2>
+                    Products
+                </h2>
+
+                <p>
+                    Add, edit and manage your products.
+                </p>
+
+            </div>
+
+            <span class="dashboard-card-arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- ORDERS -->
+
+        <a href="/admin/orders"
+           class="dashboard-card">
+
+            <div class="dashboard-card-icon">
+                🛒
+            </div>
+
+            <div class="dashboard-card-content">
+
+                <h2>
+                    Orders
+                </h2>
+
+                <p>
+                    View and manage customer orders.
+                </p>
+
+            </div>
+
+            <span class="dashboard-card-arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- CUSTOMERS -->
+
+        <a href="/admin/customers"
+           class="dashboard-card">
+
+            <div class="dashboard-card-icon">
+                👥
+            </div>
+
+            <div class="dashboard-card-content">
+
+                <h2>
+                    Customers
+                </h2>
+
+                <p>
+                    View registered customers.
+                </p>
+
+            </div>
+
+            <span class="dashboard-card-arrow">
+                →
+            </span>
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+{% block extra_js %}
+
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+{% endblock %}
+
+
+{% endblock %}

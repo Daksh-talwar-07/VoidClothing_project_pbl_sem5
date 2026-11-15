@@ -1,0 +1,309 @@
+{% extends "layouts/admin_base.html" %}
+
+{% block title %}
+Order #{{ order.id }} | {{ store_name }}
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/admin/order_details.css') }}">
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="order-details-page">
+
+    <!-- HEADER -->
+
+    <div class="order-details-header">
+
+        <div>
+            <span class="order-eyebrow">
+                ORDER #{{ order.id }}
+            </span>
+
+            <h1>
+                Order Details
+            </h1>
+
+            <p>
+                Review customer, products, payment and delivery status.
+            </p>
+        </div>
+
+        <div class="order-status-badge status-{{ order.status }}">
+            {{ order.status.replace("_", " ")|title }}
+        </div>
+
+    </div>
+
+
+    <!-- CUSTOMER + PAYMENT -->
+
+    <div class="order-top-grid">
+
+        <!-- CUSTOMER -->
+
+        <div class="order-detail-section customer-section">
+
+            <div class="section-label">
+                CUSTOMER
+            </div>
+
+            <div class="customer-info">
+
+                <div class="customer-avatar">
+                    {{ customer.full_name[0]|upper }}
+                </div>
+
+                <div>
+
+                    <h2>
+                        {{ customer.full_name }}
+                    </h2>
+
+                    <p>
+                        {{ customer.phone }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAYMENT -->
+
+        <div class="order-detail-section payment-section">
+
+            <div class="section-label">
+                PAYMENT SUMMARY
+            </div>
+
+            <div class="payment-row">
+
+                <span>
+                    Total
+                </span>
+
+                <strong>
+                    ₹{{ order.total_price }}
+                </strong>
+
+            </div>
+
+            <div class="payment-row">
+
+                <span>
+                    Discount
+                </span>
+
+                <strong class="discount-value">
+                    - ₹{{ order.discount }}
+                </strong>
+
+            </div>
+
+            <div class="payment-divider"></div>
+
+            <div class="payment-row final-row">
+
+                <span>
+                    Final Price
+                </span>
+
+                <strong>
+                    ₹{{ order.final_price }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+
+    <div class="order-detail-section products-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <div class="section-label">
+                    ORDER ITEMS
+                </div>
+
+                <h2>
+                    Products
+                </h2>
+
+            </div>
+
+            <span class="items-count">
+                {{ items|length }}
+                {% if items|length == 1 %}
+                    Item
+                {% else %}
+                    Items
+                {% endif %}
+            </span>
+
+        </div>
+
+
+        <div class="order-items-list">
+
+            {% for item in items %}
+
+            <div class="order-item">
+
+                <div class="item-number">
+                    {{ loop.index }}
+                </div>
+
+                <div class="item-info">
+
+                    <strong>
+                        {{ item.product_name }}
+                    </strong>
+
+                    <div class="item-meta">
+
+                        <span>
+                            Size: {{ item.size }}
+                        </span>
+
+                        <span>
+                            Qty: {{ item.quantity }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="item-price">
+
+                    ₹{{ item.price * item.quantity }}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <!-- STATUS -->
+
+    <div class="order-detail-section status-section">
+
+        <div class="section-label">
+            ORDER MANAGEMENT
+        </div>
+
+        <div class="status-heading">
+
+            <div>
+
+                <h2>
+                    Update Order Status
+                </h2>
+
+                <p>
+                    Change the current progress of this order.
+                </p>
+
+            </div>
+
+            <div class="current-status">
+                {{ order.status.replace("_", " ")|title }}
+            </div>
+
+        </div>
+
+
+        <form
+            method="POST"
+            action="{{ url_for(
+                'update_order_status',
+                order_id=order.id
+            ) }}"
+            class="status-form"
+        >
+
+            <input
+                type="hidden"
+                name="csrf_token"
+                value="{{ csrf_token() }}"
+            >
+
+            <select name="status">
+
+                <option
+                    value="pending"
+                    {% if order.status == "pending" %}
+                    selected
+                    {% endif %}
+                >
+                    Pending
+                </option>
+
+                <option
+                    value="processing"
+                    {% if order.status == "processing" %}
+                    selected
+                    {% endif %}
+                >
+                    Processing
+                </option>
+
+                <option
+                    value="out_for_delivery"
+                    {% if order.status == "out_for_delivery" %}
+                    selected
+                    {% endif %}
+                >
+                    Out for Delivery
+                </option>
+
+                <option
+                    value="completed"
+                    {% if order.status == "completed" %}
+                    selected
+                    {% endif %}
+                >
+                    Completed
+                </option>
+
+                <option
+                    value="cancelled"
+                    {% if order.status == "cancelled" %}
+                    selected
+                    {% endif %}
+                >
+                    Cancelled
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Update Status
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

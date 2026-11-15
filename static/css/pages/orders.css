@@ -1,0 +1,350 @@
+/* ================================
+   ORDERS PAGE
+================================ */
+
+.orders-page {
+
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 60px 24px 100px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.orders-header {
+
+    margin-bottom: 35px;
+
+}
+
+.orders-eyebrow {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    opacity: 0.5;
+
+}
+
+.orders-header h1 {
+
+    margin: 0;
+
+    font-size: 38px;
+    font-weight: 800;
+
+}
+
+.orders-header p {
+
+    margin-top: 10px;
+
+    font-size: 15px;
+
+    opacity: 0.55;
+
+}
+
+
+/* ================================
+   ORDERS LIST
+================================ */
+
+.orders-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+}
+
+
+/* ================================
+   ORDER CARD
+================================ */
+
+.order-card {
+
+    width: 100%;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.12),
+            rgba(212, 175, 55, 0.04)
+        );
+
+    border: 1px solid
+        rgba(212, 175, 55, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+.order-card:hover {
+
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(212, 175, 55, 0.45);
+
+}
+
+
+/* ================================
+   ORDER TOP
+================================ */
+
+.order-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+.order-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0.45;
+
+}
+
+.order-top h2 {
+
+    margin: 0;
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+}
+
+
+/* ================================
+   STATUS
+================================ */
+
+.order-status {
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(212, 175, 55, 0.12);
+
+    color: var(--accent);
+
+    border: 1px solid
+        rgba(212, 175, 55, 0.20);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* ================================
+   ORDER DETAILS
+================================ */
+
+.order-details {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.07);
+
+}
+
+.order-details div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+.order-details span {
+
+    font-size: 10px;
+
+    opacity: 0.45;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+.order-details strong {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+/* ================================
+   EMPTY STATE
+================================ */
+
+.no-orders {
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    border:
+        1px dashed rgba(255,255,255,0.12);
+
+    border-radius: 18px;
+
+    opacity: 0.7;
+
+}
+
+.no-orders-icon {
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+
+}
+
+.no-orders h2 {
+
+    margin: 0;
+
+    font-size: 22px;
+
+}
+
+.no-orders p {
+
+    margin-top: 8px;
+
+    font-size: 14px;
+
+    opacity: 0.6;
+
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    .orders-page {
+
+        padding:
+            35px 16px 80px;
+
+    }
+
+    .orders-header {
+
+        margin-bottom: 25px;
+
+    }
+
+    .orders-header h1 {
+
+        font-size: 28px;
+
+    }
+
+    .orders-header p {
+
+        font-size: 13px;
+
+    }
+
+    .order-card {
+
+        padding: 16px;
+
+        border-radius: 15px;
+
+    }
+
+    .order-top h2 {
+
+        font-size: 21px;
+
+    }
+
+    .order-status {
+
+        font-size: 9px;
+
+        padding: 6px 9px;
+
+    }
+
+    .order-details {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}

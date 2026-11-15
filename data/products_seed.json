@@ -1,0 +1,56 @@
+[
+ {
+  "name": "Black Oversized Crew",
+  "price": 699,
+  "stock": 20,
+  "category": "Tshirt",
+  "description": "Heavyweight oversized crew in black. Relaxed drop-shoulder fit.",
+  "sizes": "S,M,L,XL",
+  "image": "/static/images/products/tshirt.jpg"
+ },
+ {
+  "name": "Noir Satin Shirt",
+  "price": 1199,
+  "stock": 15,
+  "category": "Shirt",
+  "description": "Smooth black shirt with a clean, sharp collar.",
+  "sizes": "S,M,L,XL",
+  "image": "/static/images/products/shirt.jpg"
+ },
+ {
+  "name": "Sand Linen Shirt Set",
+  "price": 1399,
+  "stock": 12,
+  "category": "Shirt",
+  "description": "Lightweight neutral tones for easy everyday styling.",
+  "sizes": "S,M,L,XL",
+  "image": "/static/images/products/shirt2.jpg"
+ },
+ {
+  "name": "Washed Black Cargo",
+  "price": 1799,
+  "stock": 18,
+  "category": "Jeans",
+  "description": "Washed black cargo with utility pockets and a tapered leg.",
+  "sizes": "S,M,L,XL",
+  "image": "/static/images/products/jeans.jpg"
+ },
+ {
+  "name": "Teal Gloomy Hoodie",
+  "price": 1499,
+  "stock": 14,
+  "category": "Hoodie",
+  "description": "Heavy fleece hoodie with a statement back print.",
+  "sizes": "S,M,L,XL",
+  "image": "/static/images/products/hoodie.jpg"
+ },
+ {
+  "name": "Corduroy Bucket Hat",
+  "price": 499,
+  "stock": 25,
+  "category": "Accessories",
+  "description": "Soft corduroy bucket hat in sand.",
+  "sizes": "S,M,L,XL",
+  "image": "/static/images/products/hat.jpg"
+ }
+]
